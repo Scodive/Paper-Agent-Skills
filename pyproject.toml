@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "paper-agent-skills"
+version = "0.2.0"
+description = "Evidence-aware paper revision skills and local validation tools"
+requires-python = ">=3.10"
+dependencies = ["PyYAML>=6,<7", "PyMuPDF>=1.24,<2"]
+
+[project.optional-dependencies]
+collection = ["openreview-py>=1.40,<2", "requests>=2.31,<3"]
+
+[project.scripts]
+paper-agent = "paper_agent.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+paper_agent = ["skills/*/SKILL.md", "skills/*/references/*.md"]

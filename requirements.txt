@@ -1,6 +1,6 @@
-openreview-py
-pymupdf
-litellm
-requests
-tqdm
-openai
+# Core revision workflow; no model API or key is required.
+PyYAML>=6,<7
+PyMuPDF>=1.24,<2
+# Optional paper collection scripts.
+openreview-py>=1.40,<2
+requests>=2.31,<3

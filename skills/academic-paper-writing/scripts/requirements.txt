@@ -1,0 +1,2 @@
+PyYAML>=6,<7
+PyMuPDF>=1.24,<2

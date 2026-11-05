@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "status": "passed",
+  "test_type": "single_live_dsh_host_agent_revision",
+  "dsh_version": "0.2.2-rc.1",
+  "provider": "deepseek-account",
+  "model": "deepseek-flash",
+  "process_exit_code": 0,
+  "terminal_reason": "completed",
+  "elapsed_seconds": 113.54,
+  "skills_loaded": [
+    "academic-paper-writing",
+    "presentation-slides",
+    "rebuttal-writing"
+  ],
+  "installed_bundle_files_verified": 49,
+  "reviewed_chunks": 1,
+  "total_chunks": 1,
+  "original_mechanical_findings": 5,
+  "revised_mechanical_findings": 0,
+  "applied_edits": 6,
+  "pending_suggestions_retained": 3,
+  "independent_artifact_recheck": "passed",
+  "scientific_validation": "not_established",
+  "event_log_sha256": "782bb16266d7c0fa20632944592968b306cf9d60ccf5fe51da12d3c2afe67b16",
+  "limitations": [
+    "One synthetic case and one live model run; not a statistical benchmark.",
+    "Only academic-paper-writing executed a complete generation workflow.",
+    "Rebuttal and slides were discovered and loaded, not behaviorally evaluated.",
+    "No unassisted-model baseline, acceptance-rate measurement or experiment reproduction.",
+    "Raw account credentials and session logs are not included in this public receipt."
+  ]
+}

@@ -1,0 +1,4 @@
+id,status,method,dataset,split,metric,value,unit,seed,source,notes
+baseline,completed,baseline,DemoSet,validation,accuracy,90,percent,7,synthetic-fixture:baseline,Software fixture; not a real experiment
+ours,completed,temperature-scaled,DemoSet,validation,accuracy,93,percent,7,synthetic-fixture:ours,Software fixture; not a real experiment
+robustness,not_run,temperature-scaled,DemoSet,robustness,accuracy,,,,synthetic-fixture:plan,Planned; no measurement exists

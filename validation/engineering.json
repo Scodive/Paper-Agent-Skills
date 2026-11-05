@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "date_utc": "2026-11-05T11:23:38.721836+00:00",
+  "version": "0.2.0",
+  "python": "3.14.6",
+  "platform": "Darwin",
+  "source_tree_sha256": "84bbedadb84f1713d6d390f6d7dcd898e4ea840bff8deb9b880cdafc70b3cda7",
+  "unit_tests": {
+    "run": 40,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "interpretation": "Engineering validation only. No acceptance-rate, writing-quality, scientific-correctness, or unassisted-model improvement claim.",
+  "invalid_response_scenarios": {
+    "tested": 9,
+    "rejected": 9,
+    "rejected_cases": [
+      "unknown_evidence",
+      "unprovided_number",
+      "new_unresolved_citation",
+      "stale_original",
+      "overlapping_edits",
+      "wrong_bundle",
+      "incomplete_coverage",
+      "not_run_as_completed_evidence",
+      "metadata_only_scientific_support"
+    ],
+    "unexpectedly_accepted": []
+  },
+  "synthetic_revision_replay": {
+    "response_provenance": "pre_authored_host_agent_fixture",
+    "original_mechanical_findings": 5,
+    "revised_mechanical_findings": 0,
+    "applied_edits": 5,
+    "pending_suggestions_retained": 2,
+    "original_bytes_preserved": true,
+    "scientific_validation": "not_established"
+  },
+  "status": "passed"
+}

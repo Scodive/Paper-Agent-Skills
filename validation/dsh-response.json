@@ -1,0 +1,263 @@
+{
+  "schema_version": 1,
+  "bundle_id": "2fe84d2d3a220b4894e80f89bb141ccc7a8a7cf78c2d40be66fa6c78db5f20ef",
+  "summary": "Corrected the abstract and results to the supplied completed DemoSet validation records (baseline 90% and temperature-scaled 93%), removed unsupported test-split, all-baseline and statistical-significance wording, qualified the unrun robustness ablation and the generalization claim, and removed the unresolved universal related-work claim. Method details and source support remain pending. The inputs are synthetic software fixtures, and the supplied records were not independently reproduced.",
+  "reviewed_chunks": [
+    "paper:0001"
+  ],
+  "suggestions": [
+    {
+      "start_line": 4,
+      "end_line": 4,
+      "evidence_ids": [
+        "exp:baseline",
+        "exp:ours"
+      ],
+      "id": "S01-correct-abstract-results",
+      "severity": "high",
+      "status": "addressed",
+      "issue": "The abstract reports 98% accuracy on a DemoSet test split, but no completed test-split record was supplied. The completed records report 90% for the baseline and 93% for the temperature-scaled method, both on the DemoSet validation split.",
+      "recommendation": "Replace the 98% test-split claim with the supplied 93% validation result and identify the 90% baseline comparison as descriptive rather than significant."
+    },
+    {
+      "start_line": 4,
+      "end_line": 4,
+      "evidence_ids": [
+        "exp:baseline",
+        "exp:ours"
+      ],
+      "id": "S02-superiority-needs-evidence",
+      "severity": "high",
+      "status": "needs_experiment",
+      "issue": "The claim that the method significantly outperforms all baselines is unsupported: only one baseline and one supplied seed are present, and no statistical test result is supplied. A 90% versus 93% descriptive gap cannot establish significance or superiority over all baselines.",
+      "recommendation": "If a superiority claim is needed, supply completed same-dataset, same-split comparisons against the intended baselines plus the prespecified statistical analysis; otherwise retain descriptive language."
+    },
+    {
+      "start_line": 7,
+      "end_line": 7,
+      "evidence_ids": [
+        "ref:guo2017"
+      ],
+      "id": "S03-method-source-pending",
+      "severity": "medium",
+      "status": "needs_source",
+      "issue": "The method sentence attributes the approach to calibration practice using a bibliography entry that is metadata only; no source excerpt or operational detail (such as how temperature was fitted or selected) was supplied. A matching citation key does not establish that the source supports the sentence.",
+      "recommendation": "Retain a neutral description of the supplied method for now. Before restoring the attribution or citation, supply the source excerpt and the temperature-fitting or model-selection details."
+    },
+    {
+      "start_line": 11,
+      "end_line": 11,
+      "evidence_ids": [
+        "exp:ours"
+      ],
+      "id": "S04-correct-result-split",
+      "severity": "high",
+      "status": "addressed",
+      "issue": "The manuscript reports 98% on the DemoSet test split, but the completed temperature-scaled record reports 93% on the DemoSet validation split. The number, split and supported comparison differ.",
+      "recommendation": "Report 93% on the DemoSet validation split and do not describe it as a test-split result."
+    },
+    {
+      "start_line": 12,
+      "end_line": 12,
+      "evidence_ids": [
+        "exp:robustness"
+      ],
+      "id": "S05-robustness-not-run",
+      "severity": "high",
+      "status": "addressed",
+      "issue": "The robustness ablation is marked not_run and has no measurement, so it cannot confirm consistent gains.",
+      "recommendation": "State that the ablation is planned but not run and that no robustness result or conclusion is available."
+    },
+    {
+      "start_line": 15,
+      "end_line": 15,
+      "evidence_ids": [
+        "exp:baseline",
+        "exp:ours"
+      ],
+      "id": "S06-generalization-overreach",
+      "severity": "high",
+      "status": "addressed",
+      "issue": "The claim to evaluate on all datasets and prove generalization is contradicted by the supplied scope: only DemoSet validation records are completed, with one seed, and no other dataset or test-split evidence is supplied.",
+      "recommendation": "Limit the scope to the synthetic DemoSet validation fixture and state that generalization is not established."
+    },
+    {
+      "start_line": 18,
+      "end_line": 18,
+      "evidence_ids": [],
+      "id": "S07-missing-related-work-source",
+      "severity": "high",
+      "status": "needs_source",
+      "issue": "The universal claim that prior work resolves all calibration failures cites missing2026, which is absent from the supplied bibliography, and no source excerpt supports the claim.",
+      "recommendation": "Remove the universal claim and unresolved key. Supply a complete bibliography entry and a source excerpt before reinstating any related-work claim."
+    }
+  ],
+  "edits": [
+    {
+      "start_line": 4,
+      "end_line": 4,
+      "evidence_ids": [
+        "exp:baseline",
+        "exp:ours"
+      ],
+      "id": "E01-abstract-results",
+      "original": "We propose a calibrated classifier that achieves 98% accuracy on the DemoSet test split and significantly outperforms all baselines.",
+      "replacement": "In this synthetic workflow fixture, a temperature-scaled classifier achieves 93% accuracy on the DemoSet validation split, compared with 90% for the baseline under the same supplied evaluation setting. The comparison is descriptive: no test-split result or statistical test result was supplied.",
+      "kind": "evidence_correction",
+      "rationale": "Use the completed 93% validation record and 90% baseline record, and remove the unsupported test-split and significance claims."
+    },
+    {
+      "start_line": 7,
+      "end_line": 7,
+      "evidence_ids": [
+        "exp:ours"
+      ],
+      "id": "E02-method-neutral",
+      "original": "A temperature-scaled classifier follows calibration practice [@guo2017].",
+      "replacement": "We use a temperature-scaled classifier.",
+      "kind": "remove_unsupported",
+      "rationale": "The supplied record identifies the method, but the bibliography is metadata only and does not establish the attribution to a specific calibration practice."
+    },
+    {
+      "start_line": 11,
+      "end_line": 11,
+      "evidence_ids": [
+        "exp:ours"
+      ],
+      "id": "E03-result-correction",
+      "original": "The proposed method achieves 98% accuracy on the DemoSet test split.",
+      "replacement": "The proposed temperature-scaled method achieves 93% accuracy on the DemoSet validation split.",
+      "kind": "evidence_correction",
+      "rationale": "Align the reported number and split with the completed temperature-scaled record."
+    },
+    {
+      "start_line": 12,
+      "end_line": 12,
+      "evidence_ids": [
+        "exp:robustness"
+      ],
+      "id": "E04-robustness-pending",
+      "original": "The robustness ablation confirms consistent gains.",
+      "replacement": "The robustness ablation is planned but has not been run, so no robustness result is reported.",
+      "kind": "remove_unsupported",
+      "rationale": "The robustness record is not_run and contains no measurement."
+    },
+    {
+      "start_line": 15,
+      "end_line": 15,
+      "evidence_ids": [
+        "exp:baseline",
+        "exp:ours"
+      ],
+      "id": "E05-scope-limitation",
+      "original": "We evaluate on all datasets and prove generalization.",
+      "replacement": "The supplied evaluation covers only the synthetic DemoSet validation split; it does not establish generalization to other datasets or test splits.",
+      "kind": "remove_unsupported",
+      "rationale": "Completed evidence is limited to DemoSet validation, so the all-dataset and proof-of-generalization claim is not supported."
+    },
+    {
+      "start_line": 18,
+      "end_line": 18,
+      "evidence_ids": [],
+      "id": "E06-related-work-citation",
+      "original": "Prior work resolves all calibration failures [@missing2026].",
+      "replacement": "A supported summary of prior work on calibration failures is pending because the relevant source was not supplied.",
+      "kind": "citation_fix",
+      "rationale": "Remove the unresolved citation key and the unsupported universal claim while leaving the related-work synthesis visibly pending."
+    }
+  ],
+  "claim_reviews": [
+    {
+      "start_line": 4,
+      "end_line": 4,
+      "evidence_ids": [
+        "exp:ours"
+      ],
+      "claim": "achieves 98% accuracy on the DemoSet test split",
+      "status": "contradicted",
+      "reason": "The completed temperature-scaled record is 93% on the DemoSet validation split. No test-split result and no 98% measurement are supplied."
+    },
+    {
+      "start_line": 4,
+      "end_line": 4,
+      "evidence_ids": [
+        "exp:baseline",
+        "exp:ours"
+      ],
+      "claim": "significantly outperforms all baselines",
+      "status": "needs_evidence",
+      "reason": "Only one baseline is supplied (90% versus 93% on the same validation split and seed), and no statistical test result or comparison with all baselines is supplied. The descriptive gap cannot establish statistical significance or universal superiority."
+    },
+    {
+      "start_line": 7,
+      "end_line": 7,
+      "evidence_ids": [
+        "ref:guo2017"
+      ],
+      "claim": "A temperature-scaled classifier follows calibration practice [@guo2017].",
+      "status": "citation_identity_only",
+      "reason": "The bibliography entry identifies a calibration paper, but metadata and key resolution do not provide a source excerpt showing that the manuscript's method follows that practice."
+    },
+    {
+      "start_line": 10,
+      "end_line": 10,
+      "evidence_ids": [
+        "exp:baseline"
+      ],
+      "claim": "On the DemoSet validation split, the baseline achieves 90% accuracy.",
+      "status": "supported",
+      "reason": "The completed baseline record matches the method, dataset, validation split, accuracy metric, percent unit, seed and reported value. This is user-supplied fixture evidence, not an independent reproduction."
+    },
+    {
+      "start_line": 11,
+      "end_line": 11,
+      "evidence_ids": [
+        "exp:ours"
+      ],
+      "claim": "The proposed method achieves 98% accuracy on the DemoSet test split.",
+      "status": "contradicted",
+      "reason": "The completed record for the temperature-scaled method reports 93% on the DemoSet validation split, not 98% on a test split."
+    },
+    {
+      "start_line": 12,
+      "end_line": 12,
+      "evidence_ids": [
+        "exp:robustness"
+      ],
+      "claim": "The robustness ablation confirms consistent gains.",
+      "status": "not_run",
+      "reason": "The robustness record is marked not_run, has no value or unit, and records only a plan. No ablation result exists in the supplied materials."
+    },
+    {
+      "start_line": 15,
+      "end_line": 15,
+      "evidence_ids": [
+        "exp:baseline",
+        "exp:ours"
+      ],
+      "claim": "We evaluate on all datasets and prove generalization.",
+      "status": "contradicted",
+      "reason": "The only completed evaluations are on DemoSet validation with a single supplied seed. The materials contain no other datasets or test-split results and cannot support a proof of generalization."
+    },
+    {
+      "start_line": 18,
+      "end_line": 18,
+      "evidence_ids": [],
+      "claim": "Prior work resolves all calibration failures [@missing2026].",
+      "status": "needs_evidence",
+      "reason": "The citation key missing2026 is absent from the supplied bibliography, no excerpt is supplied, and the universal claim about all calibration failures is unsupported."
+    },
+    {
+      "start_line": 21,
+      "end_line": 21,
+      "evidence_ids": [
+        "exp:baseline",
+        "exp:ours",
+        "exp:robustness"
+      ],
+      "claim": "All experiment numbers and dataset names in this manuscript are synthetic fixtures for software validation.",
+      "status": "supported",
+      "reason": "The supplied experiment records identify themselves as software fixtures rather than real experiments, consistent with the appendix disclaimer."
+    }
+  ]
+}

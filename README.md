@@ -1,80 +1,60 @@
 # Paper-Agent-Skills
 
-A comprehensive library of AI agent skills for academic research and writing, designed to be used by autonomous agents to generate high-quality research outputs.
+Evidence-aware research writing skills for AI agents. Revise a manuscript against supplied experiment records and references, with traceable suggestions, focused edits, and validation reports.
 
-## Overview
+Includes **academic paper revision**, **rebuttal preparation**, and **presentation storyboarding**. The host agent performs the review; bundled Python tools package the evidence and validate edits. The tools require no model API key.
 
-This repository uses a skill-based architecture to teach AI agents how to perform complex research tasks. Instead of generic prompting, we extract concrete, reusable patterns from top-tier conference papers (NeurIPS, ICLR, CVPR) and encapsulate them into "Skills".
+## Installation
 
-## Repository Structure
-
-```
-.
-├── docs/                       # Skill definitions
-│   ├── 01-academic-writing/    # Writing publication-ready papers
-│   ├── 02-rebuttal-writing/    # Responding to reviewer comments
-│   └── 03-presentation-slides/ # Creating conference presentations
-├── src/                        # Core implementation python scripts
-├── data/                       # Knowledge base (extracted skills, metadata)
-└── references/                 # Templates and detailed guides
-```
-
-## Getting Started
-
-### Prerequisites
-
-- Python 3.8+
-- OpenAI API Key (for skill extraction and generation)
-
-### Installation
+Python 3.10+ and Node.js are required for this installation path. Install all three skills into the shared agent directory, which DSH can discover:
 
 ```bash
-pip install -r requirements.txt
+npx skills add Scodive/Paper-Agent-Skills --agent universal --skill '*' --copy --yes
+python3 -m venv .paper-agent-venv
+.paper-agent-venv/bin/python -m pip install -r .agents/skills/academic-paper-writing/scripts/requirements.txt
 ```
 
-### Usage
+Each skill includes its executable tools and readable runtime. A source checkout is not required after installation. Other supported agents can be selected through the skills CLI.
 
-#### 1. Build the Skills Database
+## Usage
 
-Collect data from top papers and extract writing patterns:
+Open an agent session in your working directory and provide:
+
+> Use academic-paper-writing to revise paper.tex against results.csv and references.bib. Use .paper-agent-venv/bin/python. Complete preparation, full-text review, edit application, and checks. Save the run to runs/review-01 and retain unresolved evidence gaps.
+
+Read the outputs in `runs/review-01/results/`:
+
+- `suggestions.md` — recommendations and unresolved items.
+- `revised.md` or `revised.tex` — the revised manuscript.
+- `changes.diff` — the exact edits.
+- `checks.md` — mechanical checks and evidence limitations.
+
+Inputs: Markdown, single-file TeX, or text-based PDF; experiment records in JSON/CSV; references in BibTeX/JSON. See [input formats](docs/input-formats.md).
+
+## Validation
+
+Observed results on the supplied synthetic fixture; engineering checks and live agent execution are reported separately.
+
+| Evaluation | Observed result | Scope |
+| --- | --- | --- |
+| Automated test suite | 40/40 passed | Ingestion, integrity, rejection rules, and standalone bundles |
+| Invalid response scenarios | 9/9 rejected | Unknown evidence, unsupported numbers, stale edits, and related cases |
+| Fixed-response replay | 5 → 0 mechanical findings; 2 pending items retained | Pre-authored response, not a new model run |
+| Live DSH skill loading | 3/3 skills loaded | DSH 0.2.2-rc.1; skills installed by skills CLI 1.7.6 |
+| Live DSH paper revision | 5 → 0 mechanical findings; 6 edits; 3 pending items retained | One independently generated synthetic-case response |
+
+The live DSH process completed successfully and its artifacts passed an independent recheck. Rebuttal and slide skills were loaded but did not receive end-to-end behavioral evaluation. These results **do not establish writing-quality gains, scientific correctness, or acceptance-rate improvements**.
+
+[Engineering results](validation/engineering.json) · [DSH results](validation/dsh.json) · [DSH-generated response](validation/dsh-response.json) · [Methodology](docs/validation.md)
+
+## Development
 
 ```bash
-python3 src/scraper.py
-python3 src/downloader.py
-python3 src/processor.py
-python3 src/skills_analyzer.py --build
+python3 -m pip install -e '.[collection]'
+python3 scripts/build_skill_bundles.py --check
+python3 scripts/validate_release.py --out output/validation.json
 ```
 
-#### 2. Generate a Paper
+For a local output preview: `python3 examples/revision/demo.py --out output/demo-01`. This replays a pre-authored synthetic review. Source workflows and additional commands are documented in the [detailed guide](docs/advanced-usage.md).
 
-Use the extracted skills to write a new paper from an idea:
-
-```bash
-# Generate outline
-python3 src/main.py --mode outline --idea "Your research idea"
-
-# Generate draft
-python3 src/main.py --mode draft --outline output/outline.json
-
-# Refine draft
-python3 src/main.py --mode refine --draft output/draft.md
-```
-
-## Available Skills
-
-### Academic Writing
-- **Purpose**: Transform research ideas into full paper drafts.
-- **Source**: Learned from Best Paper and Oral awards.
-- **Key Features**: Structural templates, rhetorical pattern matching, argument verification.
-
-### Rebuttal Writing
-- **Purpose**: Generate professional responses to reviewer critiques.
-- **Key Features**: Tone management, point-by-point addressing logic.
-
-### Presentation Slides
-- **Purpose**: Convert papers into slide decks for conferences.
-- **Key Features**: Key point extraction, visual hierarchy planning.
-
-## License
-
-MIT License
+MIT License. Collected papers retain their original licenses. Experimental records are not reproduced, references are not independently verified, and PDF layout is not preserved by the tools.

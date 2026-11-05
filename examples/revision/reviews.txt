@@ -1,0 +1,3 @@
+Synthetic review for software validation: the manuscript reports 98% test accuracy,
+but the supplied record reports 93% on validation. Please clarify the evaluation
+split, remove unsupported generalization claims, and report the ablation status.
