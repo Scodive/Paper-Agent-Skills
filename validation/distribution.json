@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "verified_source_commit": "20e8aea58402fb8fe37464b78b29344b82b49489",
+  "skills_cli_version": "1.7.6",
+  "remote_installation": {
+    "status": "passed",
+    "source": "Scodive/Paper-Agent-Skills",
+    "skills_installed": 3,
+    "bundle_files_compared_with_dsh_tested_installation": 49,
+    "files_match": true
+  },
+  "catalog": {
+    "status": "listed_and_searchable",
+    "source_url": "https://skills.sh/scodive/paper-agent-skills",
+    "search_command": "npx skills find paper --owner Scodive",
+    "skills": [
+      "academic-paper-writing",
+      "presentation-slides",
+      "rebuttal-writing"
+    ]
+  },
+  "github_actions": {
+    "status": "completed",
+    "conclusion": "success",
+    "run_url": "https://github.com/Scodive/Paper-Agent-Skills/actions/runs/42018848565",
+    "python_jobs": {
+      "3.10": "success",
+      "3.13": "success"
+    }
+  },
+  "security_display": {
+    "rebuttal_snyk_status": "warn",
+    "rebuttal_snyk_severity": "medium",
+    "scan_date": "2026-09-18",
+    "reason": "Third-party reviewer content is an indirect prompt-injection surface.",
+    "url": "https://skills.sh/scodive/paper-agent-skills/rebuttal-writing/security/snyk",
+    "scope": "Historical platform scan; it predates this source commit and is not treated as a passing audit of this release."
+  }
+}

@@ -72,3 +72,21 @@ coverage and task-export tests, but no live end-to-end behavioral score.
 `validation/engineering.json` is a local observation. The CI workflow publishes its
 own machine-readable results as artifacts; a configured workflow is not evidence
 that a remote CI run has passed.
+
+
+## Distribution checks
+
+The public GitHub source at `20e8aea58402fb8fe37464b78b29344b82b49489`
+was installed through skills CLI 1.7.6. All three skills installed, and all 49
+published bundle files matched the installation used by the live DSH exercise.
+The public skills.sh repository page returned all three skills; the CLI query
+`skills find paper --owner Scodive` also returned all three. The corresponding
+GitHub Actions run passed both Python 3.10 and Python 3.13 jobs. These observations
+are recorded separately in [distribution.json](../validation/distribution.json).
+
+The platform also displayed a historical Snyk **medium** warning for the rebuttal
+skill, dated September 18, 2026, about ingesting third-party reviewer content.
+That scan predates the published source commit. It is not counted as a passing
+security audit or represented as a fresh scan of this release. Review texts are
+treated as data by the task exporter; all external source content still requires
+careful interpretation by the host agent. See the [platform report](https://skills.sh/scodive/paper-agent-skills/rebuttal-writing/security/snyk).

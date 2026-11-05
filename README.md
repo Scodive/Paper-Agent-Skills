@@ -4,6 +4,8 @@ Evidence-aware research writing skills for AI agents. Revise a manuscript agains
 
 Includes **academic paper revision**, **rebuttal preparation**, and **presentation storyboarding**. The host agent performs the review; bundled Python tools package the evidence and validate edits. The tools require no model API key.
 
+Available in the [skills.sh directory](https://skills.sh/scodive/paper-agent-skills).
+
 ## Installation
 
 Python 3.10+ and Node.js are required for this installation path. Install all three skills into the shared agent directory, which DSH can discover:
@@ -38,6 +40,8 @@ Observed results on the supplied synthetic fixture; engineering checks and live 
 | Evaluation | Observed result | Scope |
 | --- | --- | --- |
 | Automated test suite | 40/40 passed | Ingestion, integrity, rejection rules, and standalone bundles |
+| Remote installation | 3/3 skills; 49 bundle files matched | Public GitHub source installed with skills CLI |
+| GitHub Actions | 2/2 jobs passed | Python 3.10 and 3.13; [run](https://github.com/Scodive/Paper-Agent-Skills/actions/runs/42018848565) |
 | Invalid response scenarios | 9/9 rejected | Unknown evidence, unsupported numbers, stale edits, and related cases |
 | Fixed-response replay | 5 → 0 mechanical findings; 2 pending items retained | Pre-authored response, not a new model run |
 | Live DSH skill loading | 3/3 skills loaded | DSH 0.2.2-rc.1; skills installed by skills CLI 1.7.6 |
@@ -45,7 +49,7 @@ Observed results on the supplied synthetic fixture; engineering checks and live 
 
 The live DSH process completed successfully and its artifacts passed an independent recheck. Rebuttal and slide skills were loaded but did not receive end-to-end behavioral evaluation. These results **do not establish writing-quality gains, scientific correctness, or acceptance-rate improvements**.
 
-[Engineering results](validation/engineering.json) · [DSH results](validation/dsh.json) · [DSH-generated response](validation/dsh-response.json) · [Methodology](docs/validation.md)
+[Distribution results](validation/distribution.json) · [Engineering results](validation/engineering.json) · [DSH results](validation/dsh.json) · [DSH-generated response](validation/dsh-response.json) · [Methodology](docs/validation.md)
 
 ## Development
 
